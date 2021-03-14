@@ -1,10 +1,6 @@
-<p>brand works!</p>
-
-<table class="table">
-    <thead>
-        <tr *ngFor="let b of brands">
-            <td>{{b.id}}</td>
-            <td>{{b.brandName}}</td>
-        </tr>
-    </thead>
-</table>
+<ul class="list-group">
+    <li class="list-group-item list-group-item-success">Markalarımız</li>
+    <li (click)="setCurrentBrand(b)" *ngFor="let b of brands" [class]="getBrandClass(b)" routerLink="/cars/brand/{{b.id}}">
+        {{b.brandName}}
+    </li>
+</ul>
