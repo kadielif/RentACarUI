@@ -1,5 +1,5 @@
 
-<ul class="list-group">
-    <li class="list-group-item list-group-item-success">Renklere Göre</li>
+<ul class="list-group list-group-flush mt-1">
+    <li class="list-group-item list-group-flush list-group-item-dark">Renklere Göre</li>
     <li (click)="setCurrentColor(c)" routerLink="/cars/color/{{c.id}}" [class]="getColorClass(c)"  *ngFor="let c of colors">{{c.colorName}}</li>
 </ul>

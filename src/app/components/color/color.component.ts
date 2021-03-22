@@ -15,13 +15,13 @@ export class ColorComponent implements OnInit {
   ngOnInit(): void {
     if(!this.currentColor){
       this.getColors();
-    }else{
     }
     
   }
   getColors(){
     this.colorService.getColors().subscribe(response=>{
       this.colors=response.data;
+     
     });
   }
   setCurrentColor(c:Color){
@@ -29,13 +29,10 @@ export class ColorComponent implements OnInit {
   }
   getColorClass(c:Color){
     if(this.currentColor==c){
-      return 'list-group-item list-group-item-warning';
+      return 'list-group-item list-group-item-success';
     }else{
-      return 'list-group-item list-group-item-dark';
+      return 'list-group-item list-group-item-light';
     }
-  }
-  getByIdColor(id:number){
-    this.colorService.getColors().subscribe
   }
 
 }

@@ -19,8 +19,7 @@ export class BrandComponent implements OnInit {
   getBrands(){
     this.brandService.getBrands()
     .subscribe(response=>{
-      this.brands=response.data;
-      console.log(response.data);
+      this.brands=response.data
     })
   }
   setCurrentBrand(b:Brand){
@@ -28,9 +27,9 @@ export class BrandComponent implements OnInit {
   }
   getBrandClass(b:Brand){
     if(this.currentBrand==b){
-      return 'list-group-item list-group-item-warning';
+      return 'list-group-item list-group-item-success';
     }else{
-      return 'list-group-item list-group-item-dark';
+      return 'list-group-item list-group-item-light';
     }
   }
 

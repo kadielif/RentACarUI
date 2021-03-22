@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/models/Car';
+import { CarDetailService } from 'src/app/services/car-detail.service';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -10,7 +11,8 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarComponent implements OnInit {
   cars:Car[]=[];
-  constructor(private carService:CarService,private activatedRoute:ActivatedRoute) { }
+  carImages:string[]=[];
+  constructor(private carDetailService:CarDetailService, private carService:CarService,private activatedRoute:ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
     if(this.activatedRoute.params.subscribe(params=>{
@@ -27,21 +29,40 @@ export class CarComponent implements OnInit {
   getCar(){
     this.carService.getCars()
     .subscribe(response=>{
-      this.cars=response.data
-      console.log(response.data)
+      this.cars=response.data;
+      for(let i=0;i<this.cars.length;i++)
+      { 
+        this.getOneImage(this.cars[i].carId);
+      }
     });
   }
   getByBrandId(id:number){
     this.carService.getByBrandId(id).subscribe(response=>{
       this.cars=response.data
-      console.log(this.cars);
+      for(let i=0;i<this.cars.length;i++)
+      { 
+        this.getOneImage(this.cars[i].carId);
+      }
     })
   }
   getByColorId(id:number){
-    this.carService.getByBrandId(id).subscribe(response=>{
+    this.carService.getByColorId(id).subscribe(response=>{
       this.cars=response.data
-      console.log(this.cars);
+      for(let i=0;i<this.cars.length;i++)
+      { 
+        this.getOneImage(this.cars[i].carId);
+      }
     })
   }
+  goCarDetail(id:number){
+    this.router.navigate(["/cars/carDetail/"+id]); 
+  }
+  getOneImage(id:number):any{
+    this.carDetailService.getCarImage(id).subscribe(response=>{
+        this.carImages[id]=response.data[0].imagePath; 
+    })
 
+  }
 }
+
+

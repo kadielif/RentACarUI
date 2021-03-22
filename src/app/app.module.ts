@@ -14,6 +14,8 @@ import { CarService } from './services/car.service';
 import { BrandService } from './services/brand.service';
 import { CustomerService } from './services/customer.service';
 import { ColorService } from './services/color.service';
+import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { CarDetailService } from './services/car-detail.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { ColorService } from './services/color.service';
     CustomerComponent,
     CarComponent,
     RentalComponent,
-    NaviComponent
+    NaviComponent,
+    CarDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { ColorService } from './services/color.service';
     CarService,
     BrandService,
     CustomerService,
-    ColorService
+    ColorService,
+    CarDetailService
   ],
   bootstrap: [AppComponent]
 })

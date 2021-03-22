@@ -1,5 +1,5 @@
-<ul class="list-group">
-    <li class="list-group-item list-group-item-success">Markalarımız</li>
+<ul class="list-group list-group-flush mt-1">
+    <li class="list-group-item list-group-item-dark bg-black">Markalarımız</li>
     <li (click)="setCurrentBrand(b)" *ngFor="let b of brands" [class]="getBrandClass(b)" routerLink="/cars/brand/{{b.id}}">
         {{b.brandName}}
     </li>

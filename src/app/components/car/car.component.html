@@ -1,10 +1,24 @@
-<table class="table">
-    <thead> 
-        <tr *ngFor="let car of cars">
-            <td>{{car.carName}}</td>
-            <td>{{car.brandName}}</td>
-            <td>{{car.colorName}}</td>
-            <td>{{car.dailyPrice}}</td>
+<table class="table  table-bordered table-hover mt-1">
+    <thead>
+        <tr>
+            <th>Araç No</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Renk</th>
+            <th>Vites</th>
+            <th>Resim</th>
+            <th>Detay</th>
         </tr>
     </thead>
+    <tbody> 
+        <tr *ngFor="let car of cars">
+            <td>{{car.carId}}</td>
+            <td>{{car.brandName}}</td>
+            <td>{{car.carName}}</td>
+            <td>{{car.colorName}}</td>
+            <td>{{car.description}}</td>
+            <td><img src="https://localhost:44315/uploads/{{carImages[car.carId]}}"  width="80" height="50" ></td>
+            <td><button class="btn btn-success" (click)="goCarDetail(car.carId)">İncele</button></td>
+        </tr>
+    </tbody>
 </table>
