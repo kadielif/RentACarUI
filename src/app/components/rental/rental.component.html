@@ -1,11 +1,99 @@
-<p>rental works!</p>
-<table class="table">
-    <thead> 
-        <tr *ngFor="let rental of rentals">
-            <td>{{rental.brandName}}</td>
-            <td>{{rental.customerName}}</td>
-            <td>{{rental.rentDate}}</td>
-            <td>{{rental.returnDate}}</td>
-        </tr>
-    </thead>
-</table>
+<div class="row">
+    <div class="col-5">
+        <img  class="d-block w-100 mt-1 " src="https://localhost:44315/uploads/{{carImage}}" >
+    </div>
+    <div class="col-7">
+        <table class="table table-hover table-light table-bordered table-sm mt-1">
+            <thead>  
+            <tr>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Yıl</th>
+            <th>Açıklama</th>
+            <th>Ücret</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let car of cars ">
+                    <td>{{car.carName}}</td>
+                    <td>{{car.brandName}}</td>
+                    <td>{{car.modelYear}}</td>
+                    <td>{{car.description}}</td>
+                    <td>{{car.dailyPrice}}</td>
+                </tr>
+            </tbody>
+        
+        </table>
+        <form [formGroup]="rentalFormEx" >
+            <div class=" row mt-3">
+                <label for="customer" class="col-3 col-form-label">Şirket</label>
+                <div class="col-9 form-group">
+                    <select class="form-select" id="customerId" formControlName="customerId">
+                        <option disabled selected>Müşteriler</option>
+                        <option value="{{c.userId}}"  *ngFor="let c of customers " ngDefaultControl>{{c.companyName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mt-1">
+                <label for="rentDate" class="col-3 col-form-label">Rent Date</label>
+                <div class="col-9 form-group">
+                <input class="form-control" type="date" formControlName="rentDate" value="2011-08-19" id="rentDate">
+                </div>
+            </div>
+            <div class="row mt-1">
+                <label for="returnDate" class="col-3 col-form-label">Return Date</label>
+                <div class="col-9 form-group ">
+                <input class="form-control"  type="date" formControlName="returnDate" value="2011-08-19" id="returnDate">
+                </div>
+            </div>
+        </form>  
+        <div class="row mt-1"><button class="btn btn-success" (click)="calculate()">Ücreti Hesapla</button></div>
+        <div class="row mt-1">
+            <div class="col-3"><h4>Fiyat: </h4></div>
+            <div class="col-5" [(ngModel)]="dayCount" [(ngModel)]="total" ngDefaultControl><h4 *ngIf="dayCount"  >{{total}} ₺</h4></div>
+        </div>
+    </div>
+</div>
+
+    
+    <div class="card">
+        <div class="card-header">Ödeme Bilgileri</div>
+        <div class="card-body">
+            <form [formGroup]="creditCard"  >
+                <div class="mb-3 row">
+                    <label for="isim" class="col-sm-4 col-form-label">Kart Üzerindeki İsim</label>
+                    <div class="col-sm-8 form-group " >
+                    <input type="text"  class="form-control" formControlName="userName" id="userName" value="user">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="cardNo" class="col-sm-4 col-form-label">Kart Numarası</label>
+                    <div class="col-sm-8 form-group">
+                    <input type="text" class="form-control" formControlName="cardNo" id="cardNo">
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="cardNo" class="col-sm-6 col-form-label">Son Kullanma Tarihi</label>
+                    <div class="row">
+                        <div class="col-4 form-group">
+                            <label for="day" class="col-sm-2 col-form-label">Gün</label>
+                            <input type="number" class="form-control col-sm-10 " formControlName="day" id="day">
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="month" class="col-sm-2 col-form-label">Ay</label>
+                            <input type="number" class="form-control col-sm-10 " formControlName="month" id="month">
+                        </div>
+                        <div class="col-4 form-group">
+                            <label for="cvc" class="col-sm-2 col-form-label">CVC</label>
+                            <input type="text" class="form-control col-sm-10 " formControlName="cvc" id="cvc">
+                        </div>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer"><button class="btn btn-success" (click)="rentalAdd()">Öde</button></div>
+    </div>
+
+
+

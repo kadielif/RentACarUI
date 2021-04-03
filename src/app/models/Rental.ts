@@ -1,8 +1,8 @@
-export interface Rental{
+import { ResponseModel } from "./ResponseModel";
 
-    brandName:string;
-    customerName:string;
-    rentDate:string;
-    returnDate:string;
-
+export interface Rental extends ResponseModel{
+    carId:number;
+    customerId:number;
+    rentDate:Date;
+    returnDate:Date;
 }

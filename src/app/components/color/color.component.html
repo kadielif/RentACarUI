@@ -1,5 +1,8 @@
-
-<ul class="list-group list-group-flush mt-1">
-    <li class="list-group-item list-group-flush list-group-item-dark">Renklere Göre</li>
-    <li (click)="setCurrentColor(c)" routerLink="/cars/color/{{c.id}}" [class]="getColorClass(c)"  *ngFor="let c of colors">{{c.colorName}}</li>
+<form class="d-flex mt-1">
+    <input class="form-control" [(ngModel)]="filterText" type="search" name="filterText" id="filterText"  placeholder="Search" >
+</form>
+<ul class="list-group list-group-flush">
+    <li (click)="setCurrentColor(c)" routerLink="/cars/color/{{c.id}}" [class]="getColorClass(c)"  *ngFor="let c of colors | colorFilter:filterText">{{c.colorName}}</li>
 </ul>
+
+

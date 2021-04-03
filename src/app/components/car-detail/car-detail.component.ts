@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Car } from 'src/app/models/Car';
 import { CarImages } from 'src/app/models/CarImages';
 import { CarDetailService } from 'src/app/services/car-detail.service';
@@ -13,7 +13,7 @@ export class CarDetailComponent implements OnInit {
 
   carImages:CarImages[]=[];
   cars:Car[]=[];
-  constructor( private activatedRoute:ActivatedRoute,private carDetailService:CarDetailService) { }
+  constructor( private activatedRoute:ActivatedRoute,private carDetailService:CarDetailService,private router:Router) { }
 
   ngOnInit(): void {
     if(this.activatedRoute.params.subscribe(params=>{
@@ -45,7 +45,9 @@ export class CarDetailComponent implements OnInit {
       this.cars=response.data;
       console.log(response.data);
     });
-
+  }
+  getRental(id:number){
+    this.router.navigate(["rental/",id]);
   }
 
 }

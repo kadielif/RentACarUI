@@ -1,6 +1,9 @@
+<form class="d-flex mt-1">
+    <input class="form-control" [(ngModel)]="filterText" type="search" name="filterText" id="filterText" placeholder="Marka ara" >
+</form>
 <ul class="list-group list-group-flush mt-1">
-    <li class="list-group-item list-group-item-dark bg-black">Markalarımız</li>
-    <li (click)="setCurrentBrand(b)" *ngFor="let b of brands" [class]="getBrandClass(b)" routerLink="/cars/brand/{{b.id}}">
+    <li (click)="setCurrentBrand(b)" *ngFor="let b of brands | brandFilter:filterText" [class]="getBrandClass(b)" routerLink="/cars/brand/{{b.id}}">
         {{b.brandName}}
     </li>
-</ul>
+</ul>  
+
