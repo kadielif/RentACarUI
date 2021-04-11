@@ -1,0 +1,57 @@
+
+<h5 class="mt-1" >Araba Güncelleme Sayfası</h5>
+
+<form [formGroup]="carUpdateForm " class="mt-1">
+    <div class="row">
+        <div class="col-1"><p>Renk</p></div>
+        <div class="col-5  form-group">
+            <select class="form-control mt-1" formControlName="colorId">
+                <option value="" disabled selected>Renkler</option>
+                <option  value="{{c.id}}"  *ngFor="let c of colors">{{c.colorName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <p>Marka</p>
+        </div>
+        <div class="col-5  form-group mt-1">
+            <select class="form-control "  formControlName="brandId">
+                <option value="{{b.id}}" *ngFor="let b of brands">{{b.brandName}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <p>Model</p>
+        </div>
+        <div class="col-5 form-group mt-1">
+            <input type="text" class="form-control" id="model" placeholder="Model giriniz." formControlName="model">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <p>Model Yılı</p>
+        </div>
+        <div class="col-5 form-group mt-1">
+            <input type="number" class="form-control" id="modelYear" placeholder="Model yılı giriniz." formControlName="modelYear">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1 mt-1">
+            <p>Fiyat</p>
+        </div>
+        <div class="col-5 form-group ">
+            <input type="number" class="form-control" id="dailyPrice" placeholder="Günlük ücretini giriniz." formControlName="dailyPrice">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-1">
+            <p>Açıklama</p>
+        </div>
+        <div class="col-5 form-group mt-1">
+            <input type="text" class="form-control" id="description" placeholder="Açıklama giriniz." formControlName="description">
+        </div>
+    </div>
+    <div class="btn btn-success col-2" (click)="update()">Güncelle</div>
+</form>

@@ -1,0 +1,13 @@
+<div>
+  <div class="mb-3">
+    <label for="colorAdd" class="form-label">Eski Renk</label>
+    <input type="text"  class="form-control" disabled placeholder="{{color.colorName}}" >
+  </div>
+  <form [formGroup]="colorUpdateForm">
+      <div class="mb-3">
+          <label for="colorAdd" class="form-label">Yeni Renk</label>
+          <input type="text" class="form-control" id="colorName"  placeholder="Renk giriniz." formControlName="colorName">
+        </div>
+  </form>
+  <div class="btn btn-success" (click)="update()">Güncelle</div>
+</div>

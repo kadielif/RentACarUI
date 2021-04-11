@@ -1,0 +1,13 @@
+<div>
+    <div class="mb-3">
+      <label for="brandAdd" class="form-label">Eski Marka</label>
+      <input type="text"  class="form-control" disabled placeholder="{{brand.brandName}}" >
+    </div>
+    <form [formGroup]="brandUpdateForm">
+        <div class="mb-3">
+            <label for="brandAdd" class="form-label">Yeni Marka</label>
+            <input type="text" class="form-control" id="brandName"  placeholder="Marka giriniz." formControlName="brandName">
+          </div>
+    </form>
+    <div class="btn btn-success" (click)="update()">Güncelle</div>
+</div>

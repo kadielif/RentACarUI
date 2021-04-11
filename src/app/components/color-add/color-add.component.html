@@ -1,0 +1,23 @@
+<h5>Tüm Renkler</h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Renkler</th>
+            <th>Eylem</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of colors">
+            <td>{{c.colorName}}</td>
+            <td><button class="btn btn-warning" (click)="update(c.id,c.colorName)">Güncelle</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<form [formGroup]="colorAddForm">
+    <div class="mb-3">
+        <label for="colorAdd" class="form-label">Color</label>
+        <input type="text" class="form-control" id="colorName" placeholder="Renk giriniz." formControlName="colorName">
+      </div>
+</form>
+<div class="btn btn-success" (click)="add()">Ekle</div>

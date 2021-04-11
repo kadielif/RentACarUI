@@ -1,0 +1,22 @@
+<h5>Tüm Renkler</h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Marka</th>
+            <th>Eylem</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let b of brands">
+            <td>{{b.brandName}}</td>
+            <td><button class="btn btn-warning" (click)="update(b.id,b.brandName)">Güncelle</button></td>
+        </tr>
+    </tbody>
+</table>
+<form [formGroup]="brandAddForm">
+    <div class="mb-3">
+        <label for="brandAdd" class="form-label">Brand</label>
+        <input type="text" class="form-control"  id="brandName" placeholder="Marka giriniz." formControlName="brandName">
+      </div>
+</form>
+<div class="btn btn-success" (click)="add()">Ekle</div>

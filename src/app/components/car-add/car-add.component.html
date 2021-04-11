@@ -1,0 +1,90 @@
+
+<h5 class="mt-1">Araba Ekleme/Güncelleme Sayfası</h5>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Renk</th>
+            <th>Ücreti</th>
+            <th>Yıl</th>
+            <th>Açıklama</th>
+            <th>Eylem</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let c of cars">
+            <td>{{c.carId}}</td>
+            <td>{{c.carName}}</td>
+            <td>{{c.brandName}}</td>
+            <td>{{c.colorName}}</td>
+            <td>{{c.dailyPrice}}</td>
+            <td>{{c.modelYear}}</td>
+            <td>{{c.description}}</td>
+            <td><button class="btn btn-warning" (click)="update(c.carId)">Güncelle</button></td>
+        </tr>
+    </tbody>
+</table>
+<div class="card col-8">
+    <div class="card-header"><h5>Yeni Ekle</h5></div>
+    <div class="card-body">
+        <form [formGroup]="carAddForm " class="mt-1">
+            <div class="row">
+                <div class="col-2"><p>Renk</p></div>
+                <div class="col-10  form-group">
+                    <select class="form-control mt-1" formControlName="colorId">
+                        <option value="" disabled selected>Renkler</option>
+                        <option  value="{{c.id}}"  *ngFor="let c of colors">{{c.colorName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <p>Marka</p>
+                </div>
+                <div class="col-10  form-group">
+                    <select class="form-control mt-1"  formControlName="brandId">
+                        <option value="{{b.id}}" *ngFor="let b of brands">{{b.brandName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <p>Model</p>
+                </div>
+                <div class="col-10 form-group mt-1">
+                    <input type="text" class="form-control" id="model" placeholder="Model giriniz." formControlName="model">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <p>Model Yılı</p>
+                </div>
+                <div class="col-10 form-group mt-1">
+                    <input type="number" class="form-control" id="modelYear" placeholder="Model yılı giriniz." formControlName="modelYear">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <p>Fiyat</p>
+                </div>
+                <div class="col-10 form-group mt-1">
+                    <input type="number" class="form-control" id="dailyPrice" placeholder="Günlük ücretini giriniz." formControlName="dailyPrice">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <p>Açıklama</p>
+                </div>
+                <div class="col-10 form-group mt-1">
+                    <input type="text" class="form-control" id="description" placeholder="Açıklama giriniz." formControlName="description">
+                </div>
+            </div>
+        </form>
+        
+    </div>
+    <div class="card-footer"> <div class="btn btn-success col-12 mt-1" (click)="add()">Ekle</div></div>
+</div>
+

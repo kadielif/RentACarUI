@@ -25,7 +25,16 @@
             <td>{{car.colorName}}</td>
             <td>{{car.description}}</td>
             <td><img src="https://localhost:44315/uploads/{{carImages[car.carId]}}"  width="80" height="50" ></td>
-            <td><button class="btn btn-success" (click)="goCarDetail(car.carId)">İncele</button></td>
+            <td>
+              <div class="row">
+                  <div class="col-3">
+                     <button class="btn btn-success" (click)="goCarDetail(car.carId)">İncele</button>
+                  </div>
+                  <div class="col-3">
+                    <button class="btn btn-success" (click)="goCarDetail(car.carId)">Güncelle</button>
+                  </div>
+            </div>
+            </td>
         </tr>
     </tbody>
 </table>
